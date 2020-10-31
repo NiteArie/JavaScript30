@@ -59,6 +59,29 @@
 
 <script>
 
+  const playSound = (event) => {
+    let audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+    let div = document.querySelector(`div[data-key="${event.keyCode}"]`);
+    
+    if (!audio)
+      return;
+    
+    div.classList.add("playing");
+    audio.play();
+  }
+
+  const removeSound = (event) => {
+    let div = document.querySelector(`div[data-key="${event.keyCode}"]`);
+
+    if ( !div )
+      return;
+
+    if ( div.classList.contains("playing"))
+      div.classList.remove("playing");
+  }
+
+  window.addEventListener("keyup", removeSound);
+  window.addEventListener("keydown", playSound);
 </script>
 
 
